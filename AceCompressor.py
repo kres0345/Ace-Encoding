@@ -6,6 +6,7 @@ import os, io
 global charset0, charset1, charset2, charset3, charDictionary, Built, charset
 charset0 = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '!', '@', '#', '%', '&', '/', '\\', '<', '>', '{', '}', '(', ')', '=', '"', "'", '+', '-', '*', '[', ']', '$', '|', '?', '-', '_', ' ']
 charset1 = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',' ']
+charset2 = ['.', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ' ']
 #Lowered the supported chars while testing to decrease dictionary building time.
 charDictionary = {}
 charset = []
@@ -36,8 +37,11 @@ def BuildChar(charsetInt=0):
     elif(int(charsetInt) == 3):
         charset = charset3
     else:
+        print("False")
         return False
-
+    #Reset
+    charDictionary = {}
+    
     for i in range(len(charset)):
         for y in range(len(charset)):
             charDictionary.update({"{}{}".format(charset[i], charset[y]):0})
@@ -55,13 +59,15 @@ def BuildChar(charsetInt=0):
 def Unpack():
     pass
 
-def Pack(file):
+def Pack(file, output=""):
     if not(Built):
         print("No charset built")
         return False
     if not(os.path.isfile(file)):
         print("File doesnt exist")
         return False
+    if(output == ""):
+        output = file
     global charDictionary, charset
     outText = ""
     encoded = ""
@@ -79,15 +85,18 @@ def Pack(file):
         try:
             encoded += charDictionary.get(outText[i]+outText[i+1])
         except Exception as e:
-            print(e)
+            print(str(e) + "line 85")
         i+=2
 
     #open(file+".ace",'w').write(encoded)
-    io.open(file+".ace","w", encoding="utf-8").write(encoded)
+    io.open(output+".ace","w", encoding="utf-8").write(encoded)
+    print("Packed '{}', output: {}".format(file, output+".ace"))
     return True
 
-BuildChar()
-Pack("test.txt")
+BuildChar(0)
+Pack("pi100000.txt", "pi100000Char0.txt")
+BuildChar(2)
+Pack("pi100000.txt", "pi100000Char2.txt")
 
 try:
     if(os.path.isfile(argv[1])):
