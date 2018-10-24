@@ -1,11 +1,17 @@
-# Ice-TEE
-Needs cool acronym. A enciphering languages witch has an expansion ratio of 2:1.
+# Ace-Encoding
+An encoding language that has an expansion rate of 2:1.
 
-Calculations:
+### Calculations
 Chars available: `abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ 1234567890 ! @ # % & / \ < > { } ( ) = " ' + - * [ ] $ | ? - _ ` that's 89 characters(incl. space). That's a lot.
 
-So to make the ratio 2:1 we have to make 1 char represent 1 or 2 characters at once. That means we'll need:
-`(89 * 89) + 89`, So many unique characters are we gonna need. Damn. That's 8010 Chars.
+To make the ratio 2:1 I'll have 1 char represent 1 or 2 characters at once. What that means is that I'll use:
+`(89 * 89) + 89`, individual characters. EDIT: I'll need new calculations as these are outdated.
 
-This project is still being developed and calculated, it's a pretty tough calculas and is thus put on the shelf for now
-
+### Practice
+- CharMapModule.py
+`CharMapModule.TranslateT2R(string)`
+Returns the now-encoded-string, using the charset specified at top of CharMapModule.py.
+`CharMapModule.TranslateR2T(rare)`
+Returns the now-decoded-rare, translated back using the charset specified at top of CharMapModule.py.
+`CharMapModule.__init__()`
+Creates the dictionary based on the charset.
