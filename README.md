@@ -42,3 +42,12 @@ AceCompressor is a program that compresses files, but I havent finished it — a
  - CharMap.py
 
 More like a demo, the first file I worked on, the code from this file have been migrated to CharMapModule.py.
+
+### Demo code
+```python
+import CharMapModule as CMM
+CMM.BuildDictionary()
+encodedtext = CMM.TranslateT2R("Hello world")
+print( "Encoded: " + str(encodedtext) )
+print( "Decoded: " + CMM.TranslateR2T(encodedtext) )
+```
