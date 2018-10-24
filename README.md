@@ -51,3 +51,4 @@ encodedtext = CMM.TranslateT2R("Hello world")
 print( "Encoded: " + str(encodedtext) )
 print( "Decoded: " + CMM.TranslateR2T(encodedtext) )
 ```
+Note: When decoded it should output "Hello Worl", because the number of letters in "Hello World" is uneven. When the string length is uneven it cuts off the last character
