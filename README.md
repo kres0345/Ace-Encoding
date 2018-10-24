@@ -8,8 +8,9 @@ To make the ratio 2:1 I'll have 1 char represent 1 or 2 characters at once. What
 `(89 * 89) + 89`, individual characters. EDIT: I'll need new calculations as these are outdated.
 
 ### Practice
-Use the CharMapModule.py.
-`
+ - CharMapModule.py.
+
+```python
 NAME
     CharMapModule - # -*- coding: utf-8 -*-
 
@@ -33,9 +34,11 @@ FUNCTIONS
 DATA
     chars2 = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', ...
     dictionaryChar = {}
-`
-- AceCompressor.py
+```
+ - AceCompressor.py
+
 AceCompressor is a program that compresses files, but I havent finished it — and I am not planning to.
 
-- CharMap.py
+ - CharMap.py
+
 More like a demo, the first file I worked on, the code from this file have been migrated to CharMapModule.py.
