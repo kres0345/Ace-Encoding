@@ -28,9 +28,6 @@ while(i<len(dictionaryChar)):
     print("Progress {}%".format(str(i/len(dictionaryChar)*100)))
     i+=1
 
-print(dictionaryChar.get("aa"))
-
-#print(dictionaryChar)
 sys.exit()
 
 i=97
