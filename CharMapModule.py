@@ -2,10 +2,11 @@
 # -*- coding: utf-8 -*-
 import sys
 from itertools import combinations
+import huffman_header
 global dictionaryChar, chars2
 dictionaryChar = {}
 chars2 = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',' ']
-
+#chars2 = ['0','1','2','3','4','5','6','7','8','9']
 
 def __init__():
     global dictionaryChar, chars2
@@ -16,14 +17,16 @@ def TranslateT2R(text):
     :param text: The input string.
     :return: The text translated into rare.
     """
-    #global dictionaryChar, chars2
     rare = ""
     translated = ""
 
+    '''#Use this for old encoding without a huffman table.
     for i in range(len(text)):
         if text[i] in chars2:
             rare += text[i]
-
+    '''
+    rare = text
+    
     if len(rare) % 2 != 0:
         rare = rare[:-1]
 
@@ -42,7 +45,6 @@ def TranslateR2T(rare):
     :param rare: The rare text created using the exact same charset.
     :return: Translated text.
     """
-    #global dictionaryChar, chars2
     text = ""
     keys = list(dictionaryChar.keys())
     values = list(dictionaryChar.values())
@@ -65,7 +67,18 @@ def SetCharset(List):
     return False
 
 
+def BuildHoffmanDictionary(text):
+    """
+    Builds a dictionary based only on charecters that exist in input.
+    """
+    global dictionaryChar
+    dictionaryChar = huffman_header.create_hoffman_dict(text)
+
+
 def BuildDictionary(logging=False):
+    """
+    Builds a dictionary based on the list called "chars2".
+    """
     global dictionaryChar
     dictionaryChar = {}
     for i in range(len(chars2)):
