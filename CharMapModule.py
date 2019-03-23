@@ -20,7 +20,7 @@ def TranslateT2R(text):
     rare = ""
     translated = ""
 
-    '''#Use this for old encoding without a huffman table.
+    '''Used this for old encoding without a huffman table.
     for i in range(len(text)):
         if text[i] in chars2:
             rare += text[i]

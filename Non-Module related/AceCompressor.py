@@ -18,7 +18,7 @@ def ReadHeader(file):
     if not(os.path.isfile(file)):
         return 0
 
-    FileText = open(file,'r').read()
+    #FileText = open(file,'r').read() #Unused
     
 
 def BuildChar(charsetInt=0):
@@ -26,7 +26,8 @@ def BuildChar(charsetInt=0):
         int(charsetInt)
     except Exception as e:
         return e
-    global charset0, charset1, charset2, charset3, charset, charDictionary, Built
+    #global charset0, charset1, charset2, charset3, charset, charDictionary, Built
+    global charset, charDictionary, Built
 
     if(int(charsetInt) == 0):
         charset = charset0
@@ -54,7 +55,6 @@ def BuildChar(charsetInt=0):
 
     Built = True
 
-    
 
 def Unpack():
     pass
@@ -101,5 +101,5 @@ Pack("pi100000.txt", "pi100000Char2.txt")
 try:
     if(os.path.isfile(argv[1])):
         pass
-except:
-    pass
+except ValueError: #P.s. Not tested wheter this is the appropiete exception
+    pass #Just messing around with codacy
